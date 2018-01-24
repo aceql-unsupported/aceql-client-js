@@ -1,0 +1,28 @@
+{
+  "name": "aceql-client",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "abecquereau",
+  "contributors": [],
+  "dependencies": {},
+  "description": "Javascript toolkit for easy access of remote SQL databases managed with AceQL HTTP - https://www.aceql.com",
+  "main": "AceQLConnection.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kawansoft/aceql-client-js.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kawansoft/aceql-client-js/issues"
+  },
+  "homepage": "https://github.com/kawansoft/aceql-client-js#readme"
+}

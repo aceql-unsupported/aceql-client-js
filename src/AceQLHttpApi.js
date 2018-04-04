@@ -1,6 +1,7 @@
 import ResultSetAnalyzer from 'ResultSetAnalyzer.js';
 import sendGet from 'AceQLConnectionUtil.js';
 import sendPost from 'AceQLConnectionUtil.js'
+import UserLoginStore from 'UserLoginStore.js'
 import version from 'Version.js';
 
 /**
@@ -30,23 +31,46 @@ function AceQLHttpApi(serverUrl, database, username, password) {
      * Initialisation
      */
     this.init = function () {
-        var url = this.serverUrl + "/database/" + this.database + "/username/" + this.username 
-                + "/connect";
-                //+ "?password=" + this.password + "&stateless=" + this.stateless;
-        var parametersMap = new Map();
-        parametersMap.set("password", this.password);
-        parametersMap.set("statelass", this.stateless);
+        var userLoginStore = new UserLoginStore(serverUrl, username, database);
         
-        var result = sendPost(url, parametersMap);
-        
-        var resultSetAnalyzer = new ResultSetAnalyzer(result);
+        if(userLoginStore.isAlreadyLogged()) {
+            var sessionId = userLoginStore.getSessionId();
+		
+            var theUrl = serverUrl + "/session/" + sessionId + "/get_connection";
+            var result = sendGet(theUrl);
+		
+	    var resultAnalyzer = new ResultSetAnalyzer(result);
 
-        if (resultSetAnalyzer.isStatusOk() === false) {
-            throw AceQLException(resultSetAnalyzer.getErrorMessage(), resultSetAnalyzer.getErrorType());
+            if (!resultAnalyzer.isStatusOk() === false) {
+                throw new AceQLException(resultAnalyzer.getErrorMessage(),
+                        resultAnalyzer.getErrorType());
+            }
+
+            var connectionId = resultAnalyzer.getValue("connection_id");
+            trace("Ok. New Connection created: " + connectionId);
+
+            this.url = serverUrl + "/session/" + sessionId + "/connection/" + connectionId + "/";
+        } else {
+            var url = this.serverUrl + "/database/" + this.database + "/username/" + this.username 
+                    + "/connect";
+                    //+ "?password=" + this.password + "&stateless=" + this.stateless;
+            var parametersMap = new Map();
+            parametersMap.set("password", this.password);
+            parametersMap.set("statelass", this.stateless);
+
+            var result = sendPost(url, parametersMap);
+
+            var resultSetAnalyzer = new ResultSetAnalyzer(result);
+
+            if (resultSetAnalyzer.isStatusOk() === false) {
+                throw AceQLException(resultSetAnalyzer.getErrorMessage(), resultSetAnalyzer.getErrorType());
+            }
+
+            var sessionId = resultSetAnalyzer.getValue("session_id");
+            var connectionId = resultSetAnalyzer.getValue("connection_id");
+            this.url = serverUrl + "/session/" + sessionId + "/connection/" + connectionId + "/";
+            userLoginStore.setSessionId(sessionId);
         }
-
-        var sessionId = resultSetAnalyzer.getValue("session_id");
-        this.url = serverUrl + "/session/" + sessionId + "/";
     };
     
     /**
@@ -161,6 +185,25 @@ function AceQLHttpApi(serverUrl, database, username, password) {
         this.callApiNoResult("disconnect", null);
     };
 
+    /**
+     * Calls /close API
+     * 
+     * @throws AceQLException if any Exception occurs
+     */
+    this.close = function() {
+        this.callApiNoResult("close", null);
+    };
+    
+    /**
+     * Calls /logout API
+     * 
+     * @throws AceQLException if any Exception occurs
+     */
+    this.logout = function() {
+        var loginStore = new UserLoginStore(serverUrl, username, database);
+	loginStore.remove();
+    };
+    
     /**
      * Calls /commit API
      * 
@@ -353,5 +396,4 @@ function AceQLHttpApi(serverUrl, database, username, password) {
 
     };
 
-}
-;
+};

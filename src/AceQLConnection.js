@@ -20,15 +20,27 @@ function AceQLConnection (serverUrl, database, username, password) {
     this.username = username;
     this.password = password;
     
+    
+    // If undefined 
     this.aceQLHttpApi = new AceQLHttpApi(this.serverUrl, database, username, password);
     this.aceQLHttpApi.init();
-    
+    //Else
+    //
     /**
-     * Close connection (disconnect from server)
+     * Close connection
      */
     this.close = function () {
-        this.aceQLHttpApi.disconnect();
+        
+        this.aceQLHttpApi.close();
     };
+    
+    /**
+     * Logout
+     */
+    this.logout = function () {
+        this.aceQLHyttpApi.logout();
+    };
+    
     
     /**
      * Commit current transaction

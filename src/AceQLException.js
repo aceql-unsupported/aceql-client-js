@@ -5,7 +5,7 @@
  */
 
 /**
- * Object trhown when a problem occurs
+ * Object thrown when a problem occurs
  * @param {type} reason
  * @param {type} vendorCode
  * @returns {AceQLException}

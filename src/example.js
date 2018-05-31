@@ -25,45 +25,42 @@ this.remoteConnectionBuilder = function () {
  */
 this.insertCustomerAndOrderLog = function (connection, customerId, itemId) {
     connection.setAutoCommit(false);   
+    try {
+    	var sql = "INSERT INTO CUSTOMER VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )";
+    	connection.prepareStatement(sql);
+    	var i = 1;
+    	connection.setInt(i++, customerId);
+    	connection.setString(i++, "Sir");
+    	connection.setString(i++, "Doe");
+    	connection.setString(i++, "John");
+    	connection.setString(i++, "1 Madison Ave");
+    	connection.setString(i++, "New York");
+    	connection.setString(i++, "NY 10010");
+    	connection.setString(i++, null);
+    	connection.executeUpdate();
+     
+    	sql = "INSERT INTO ORDERLOG (customer_id, item_id, description, item_cost, date_placed, date_shipped, is_delivered, quantity) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+   	 connection.prepareStatement(sql);
     
-    var sql = "INSERT INTO CUSTOMER VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )";
-    connection.prepareStatement(sql);
-    var i = 1;
-    connection.setInt(i++, customerId);
-    connection.setString(i++, "Sir");
-    connection.setString(i++, "Doe");
-    connection.setString(i++, "John");
-    connection.setString(i++, "1 Madison Ave");
-    connection.setString(i++, "New York");
-    connection.setString(i++, "NY 10010");
-    connection.setString(i++, null);
-    console.log("Execute update");
-    connection.executeUpdate();
-    
-    connection.commit();
-     console.log("update done");
-    sql = "INSERT INTO ORDERLOG (customer_id, item_id, description, item_cost, date_placed, date_shipped, is_delivered, quantity) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-    connection.prepareStatement(sql);
-    
-    var now = new Date();
-    i = 1;
-    connection.setInt(i++, customerId);
-    connection.setInt(i++, itemId);
-    connection.setString(i++, "Item Description");
-    connection.setBigDecimal(i++, 99.99);
-    connection.setDate(i++, now);
-    connection.setTimestamp(i++, now);
-    connection.setInt(i++, 1);
-    connection.setInt(i++, 2);
-    console.log("insert orderlog");
-    try{
-    connection.executeUpdate();
+    	var now = new Date();
+    	i = 1;
+    	connection.setInt(i++, customerId);
+    	connection.setInt(i++, itemId);
+    	connection.setString(i++, "Item Description");
+    	connection.setBigDecimal(i++, 99.99);
+    	connection.setDate(i++, now);
+    	connection.setTimestamp(i++, now);
+    	connection.setInt(i++, 1);
+    	connection.setInt(i++, 2);
+	
+        connection.commit();
+	console.log("insert orderlog done");
     }
     catch(error) {
-        console.log(error);
+        connection.rollback();
+        console.log(error);    
     }
-    console.log("insert orderlog done");
-    connection.commit();
+    
     connection.setAutoCommit(true);
 };
 

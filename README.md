@@ -1,6 +1,22 @@
 # AceQL HTTP 2.0 - JavaScript Client SDK
 <img src="https://www.aceql.com/favicon.png" alt=""/>
 
+   * [AceQL HTTP 2.0 - JavaScript Client SDK](#aceql-http-20---javascript-client-sdk)
+   * [Fundamentals](#fundamentals)
+      * [JavaScript Versions](#javascript-versions)
+      * [AceQL Server side compatibility](#aceql-server-side-compatibility)
+      * [Installation](#installation)
+      * [Data transport](#data-transport)
+      * [Best practices for fast response time](#best-practices-for-fast-response-time)
+      * [Datatypes](#datatypes)
+      * [Quickstart](#quickstart)
+      * [Handling Exceptions](#handling-exceptions)
+         * [The error type](#the-error-type)
+         * [Most common AceQL server messages](#most-common-aceql-server-messages)
+         * [HTTP Status Codes](#http-status-codes)
+      * [Advanced Usage](#advanced-usage)
+         * [Transactions](#transactions)
+
 # Fundamentals
 
 This document describes how to use the AceQL SDK / module and gives some details about how it operates with the AceQL Server side.

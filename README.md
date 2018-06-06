@@ -1,7 +1,6 @@
 # AceQL HTTP 2.0 - JavaScript Client SDK
 <img src="https://www.aceql.com/favicon.png" alt=""/>
 
-   * [AceQL HTTP 2.0 - JavaScript Client SDK](#aceql-http-20---javascript-client-sdk)
    * [Fundamentals](#fundamentals)
       * [License](#license)
       * [JavaScript Versions](#javascript-versions)
@@ -10,13 +9,13 @@
       * [Data transport](#data-transport)
       * [Best practices for fast response time](#best-practices-for-fast-response-time)
       * [Datatypes](#datatypes)
-      * [Quickstart](#quickstart)
-      * [Handling Exceptions](#handling-exceptions)
-         * [The error type](#the-error-type)
-         * [Most common AceQL server messages](#most-common-aceql-server-messages)
-         * [HTTP Status Codes](#http-status-codes)
-      * [Advanced Usage](#advanced-usage)
-         * [Transactions](#transactions)
+* [Quickstart](#quickstart)
+    * [Handling Exceptions](#handling-exceptions)
+      * [The error type](#the-error-type)
+      * [Most common AceQL server messages](#most-common-aceql-server-messages)
+      * [HTTP Status Codes](#http-status-codes)
+   * [Advanced Usage](#advanced-usage)
+      * [Transactions](#transactions)
 
 # Fundamentals
 
@@ -83,7 +82,7 @@ Note that the AceQL module does not allow you to specify data types to use; data
 
 Parameter values are automatically converted to their SQL equivalent. 
 
-## Quickstart
+# Quickstart
 
 To use the module, just create a `AceQLConnection` object that represents the database:
 
@@ -153,7 +152,7 @@ At end of our session, it is highly recommended to close the `AceQLConnection `:
 connection.close();
 ```
 
-## Handling Exceptions
+# Handling Exceptions
 
 The `AceQLException` contains 4 pieces of information :
 
@@ -164,7 +163,7 @@ The `AceQLException` contains 4 pieces of information :
 | Http Status Code | See below for description. Retrieved with `getHttpStatusCode(`). |
 | Server Exception | The Exception Stack Trace thrown on the server side, if any. Retrieved with `getRemoteStackTrace()`. |
 
-### The error type
+## The error type
 
 The error type allows users to get the type of error and where the error occurred. It is retrieved with `AceQLException.getErrorCode()`:
 
@@ -176,7 +175,7 @@ The error type allows users to get the type of error and where the error occurre
 | 3                | The AceQL Server forbids the execution of the SQL statement for a security reason. For security reasons, `getMessage()` gives access to voluntarily vague details. |
 | 4                | The AceQL Server is on failure and raised an unexpected Java Exception. The stack track is included and accessible via `getRemoteStackTrace()`. |
 
-###  Most common AceQL server messages
+##  Most common AceQL server messages
 
 | AceQL  Sever Error Messages   (AceQLException.getErrorCode()  = 2) |
 | ------------------------------------------------------------ |
@@ -194,7 +193,7 @@ The error type allows users to get the type of error and where the error occurre
 | Unable to get a  Connection                                  |
 | Unknown SQL  action or not supported by software             |
 
-### HTTP Status Codes
+## HTTP Status Codes
 
 The HTTP Status Code is accessible with the `Error.http_status_code` property. The HTTP Status Code is 200 (OK) on successful completion calls.
 
@@ -213,9 +212,9 @@ When an error occurs:
 | 404 (NOT_FOUND)              | BLOB directory does not exist on server<br />BLOB file not found on server |
 | 500  (INTERNAL_SERVER_ERROR) | The AceQL Server is on failure and raised  an unexpected Java Exception |
 
-## Advanced Usage
+# Advanced Usage
 
-### Transactions
+## Transactions
 
 Transactions are supported by the SDK. Because the remote server executes JDBC code, client code must follow the JDBC requirement to set the auto commit mode to false prior executing a transaction.
 

@@ -11,11 +11,11 @@
       * [Datatypes](#datatypes)
 * [Quickstart](#quickstart)
 * [Handling Exceptions](#handling-exceptions)
-      * [The error type](#the-error-type)
-      * [Most common AceQL server messages](#most-common-aceql-server-messages)
-      * [HTTP Status Codes](#http-status-codes)
-   * [Advanced Usage](#advanced-usage)
-      * [Transactions](#transactions)
+  * [The error type](#the-error-type)
+  * [Most common AceQL server messages](#most-common-aceql-server-messages)
+  * [HTTP Status Codes](#http-status-codes)
+* [Advanced Usage](#advanced-usage)
+  *  [Transactions](#transactions)
 
 # Fundamentals
 
@@ -265,3 +265,4 @@ Transaction example:
 
 
 ------
+

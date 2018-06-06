@@ -222,7 +222,8 @@ Transactions are supported by the SDK. Because the remote server executes JDBC c
 Transaction example:
 
 ```javascript
-connection.setAutoCommit(false);   
+    connection.setAutoCommit(false);   
+
     try {
     	var sql = "INSERT INTO CUSTOMER VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )";
     	connection.prepareStatement(sql);
@@ -265,31 +266,4 @@ connection.setAutoCommit(false);
 
 
 ------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

@@ -3,6 +3,7 @@
 
    * [AceQL HTTP 2.0 - JavaScript Client SDK](#aceql-http-20---javascript-client-sdk)
    * [Fundamentals](#fundamentals)
+      * [License](#license)
       * [JavaScript Versions](#javascript-versions)
       * [AceQL Server side compatibility](#aceql-server-side-compatibility)
       * [Installation](#installation)
@@ -26,6 +27,10 @@ The AceQL SDK / module allows you to wrap the [AceQL HTTP APIs](https://github.c
 The AceQL Server operation is described in [AceQL HTTP Server Installation and Configuration Guide](https://github.com/kawansoft/aceql-http/blob/master/aceql-http-2.0-user-guide-server.md), whose content is sometimes referred to in his User Guide.
 
 On the remote side, like the AceQL Server access to the SQL database using Java JDBC, we will sometimes use the JDBC terminology (ResultSet, etc.) in this document. Nevertheless, knowledge of Java or JDBC is *not* a requirement.
+
+## License
+
+The SDK is licensed with the liberal [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) license.
 
 ## JavaScript Versions
 

@@ -10,7 +10,7 @@
       * [Best practices for fast response time](#best-practices-for-fast-response-time)
       * [Datatypes](#datatypes)
 * [Quickstart](#quickstart)
-    * [Handling Exceptions](#handling-exceptions)
+* [Handling Exceptions](#handling-exceptions)
       * [The error type](#the-error-type)
       * [Most common AceQL server messages](#most-common-aceql-server-messages)
       * [HTTP Status Codes](#http-status-codes)

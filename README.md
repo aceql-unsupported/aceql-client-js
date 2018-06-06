@@ -217,7 +217,7 @@ connection.setAutoCommit(false);
     	connection.executeUpdate();
      
     	sql = "INSERT INTO ORDERLOG (customer_id, item_id, description, item_cost, date_placed, date_shipped, is_delivered, quantity) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-   	 connection.prepareStatement(sql);
+        connection.prepareStatement(sql);
     
     	var now = new Date();
     	i = 1;
@@ -231,7 +231,7 @@ connection.setAutoCommit(false);
     	connection.setInt(i++, 2);
 	
         connection.commit();
-	    console.log("insert orderlog done");
+        console.log("insert orderlog done");
     }
     catch(error) {
         connection.rollback();
@@ -244,7 +244,6 @@ connection.setAutoCommit(false);
 
 
 ------
-
 
 
 

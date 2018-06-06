@@ -90,7 +90,7 @@ To use the module, just create a `AceQLConnection` object that represents the da
 ```javascript
     // The URL of the AceQL Server servlet
     // Port number is the port number used to start the Web Server:
- 	var serverUrl = "http://localhost:9090/aceql";
+    var serverUrl = "http://localhost:9090/aceql";
     
     // The remote database to use:
     var database = "kawansoft_example";
@@ -266,4 +266,3 @@ Transaction example:
 
 
 ------
-

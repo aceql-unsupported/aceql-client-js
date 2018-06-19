@@ -1,4 +1,4 @@
-# AceQL HTTP 2.0 - JavaScript Client SDK
+# AceQL HTTP - JavaScript Client SDK v2.0
 <img src="https://www.aceql.com/favicon.png" alt=""/>
 
    * [Fundamentals](#fundamentals)
@@ -265,4 +265,3 @@ Transaction example:
 
 
 ------
-

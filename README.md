@@ -1,4 +1,7 @@
-# AceQL HTTP - JavaScript Client SDK v2.0
+# AceQL HTTP 
+
+## JavaScript Client SDK v2.0 - June 19, 2018
+
 <img src="https://www.aceql.com/favicon.png" alt=""/>
 
    * [Fundamentals](#fundamentals)
@@ -265,4 +268,3 @@ Transaction example:
 
 
 ------
-
